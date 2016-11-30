@@ -7,6 +7,8 @@
     <groupId>es.us.isa.cristal</groupId>
     <artifactId>ram2bpmn-showcase</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
     <build>
         <plugins>
             <plugin>
@@ -15,6 +17,13 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
                 </configuration>
             </plugin>
         </plugins>

@@ -7,7 +7,7 @@ import es.us.isa.cristal.ram.Activity;
 import es.us.isa.cristal.ram.RAM;
 import es.us.isa.cristal.ram2bpmn.Ram2Bpmn;
 import es.us.isa.cristal.ram2bpmn.templates.TemplateAssignment;
-import es.us.isa.cristal.ram2bpmn.templates.repository.FileTemplateRepository;
+import es.us.isa.cristal.ram2bpmn.templates.repository.SingleFileTemplateRepository;
 import es.us.isa.cristal.ram2bpmn.templates.repository.TemplateRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.PostConstruct;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.InputStream;
 import java.util.Map;
 import java.util.Set;
@@ -38,7 +37,7 @@ public class ShowcaseResource {
 
     @PostConstruct
     public void loadRepository() {
-        this.repository = new FileTemplateRepository(new File(directory));
+        this.repository = new SingleFileTemplateRepository(getClass().getResourceAsStream(directory));
     }
 
     @RequestMapping(value="/bpmn", method= RequestMethod.POST, produces = "application/json")
